@@ -10,7 +10,7 @@ The sensor signals (accelerometer and gyroscope) were pre-processed by applying 
 
 ##Data Cleaning and tidying steps
 
-Generally, the my proceess for tidying the data can be divided fo five steps.
+Generally, the proceess for tidying the data can be divided fo five steps.
 
 1. In the first step, the six data files (3 for train, 3 for test) are loaded and merged alltogether:
 first, the complete train set is created, by joining the columms of the X_train, Y_train, and subject_train. Similarly, a joined test data-set is created. These two data set are joined by their rows to create a whole data frame - train and test data.
@@ -51,82 +51,82 @@ As mentioned in the "features_info.txt" file, the sensor signals variables in th
 
 The following variables in the dataset are the mean and standard deviation of the body and gravity acceleration signals, calculated from the 3-axial raw signals that were mentioned earlier:
 
-*timeBodyAcc_mean()_X
-*timeBodyAcc_mean()_Y
-*timeBodyAcc_mean()_Z
-*timeBodyAcc_std()_X
-*timeBodyAcc_std()_Y
-*timeBodyAcc_std()_Z
-*timeGravityAcc_mean()_X
-*timeGravityAcc_mean()_Y
-*timeGravityAcc_mean()_Z
-*timeGravityAcc_std()_X
-*timeGravityAcc_std()_Y
-*timeGravityAcc_std()_Z
-
+* timeBodyAcc_mean()_X
+* timeBodyAcc_mean()_Y
+* timeBodyAcc_mean()_Z
+* timeBodyAcc_std()_X
+* timeBodyAcc_std()_Y
+* timeBodyAcc_std()_Z
+* timeGravityAcc_mean()_X
+* timeGravityAcc_mean()_Y
+* timeGravityAcc_mean()_Z
+* timeGravityAcc_std()_X
+* timeGravityAcc_std()_Y
+* timeGravityAcc_std()_Z
+ 
 ###Jerk Signals
 
 The following variables in the dataset are the mean and standard deviation of the body and gravity Jerk signals, obtained from the linear acceleration and angular velocity variables (for all 3 axis)
 
-*timeBodyAccJerk_mean()_X
-*timeBodyAccJerk_mean()_Y
-*timeBodyAccJerk_mean()_Z
-*timeBodyAccJerk_std()_X
-*timeBodyAccJerk_std()_Y
-*timeBodyAccJerk_std()_Z
-*timeBodyGyro_mean()_X
-*timeBodyGyro_mean()_Y
-*timeBodyGyro_mean()_Z
-*timeBodyGyro_std()_X
-*timeBodyGyro_std()_Y
-*timeBodyGyro_std()_Z
+* timeBodyAccJerk_mean()_X
+* timeBodyAccJerk_mean()_Y
+* timeBodyAccJerk_mean()_Z
+* timeBodyAccJerk_std()_X
+* timeBodyAccJerk_std()_Y
+* timeBodyAccJerk_std()_Z
+* timeBodyGyro_mean()_X
+* timeBodyGyro_mean()_Y
+* timeBodyGyro_mean()_Z
+* timeBodyGyro_std()_X
+* timeBodyGyro_std()_Y
+* timeBodyGyro_std()_Z
 
 ###Magnitude of Signals
 
 The following variable in the dataset represent the magnitude of these three-dimensional signals, calculated using the Euclidean norm:
 
-*timeBodyGyroJerk_mean()_X
-*timeBodyGyroJerk_mean()_Y
-*timeBodyGyroJerk_mean()_Z
-*timeBodyGyroJerk_std()_X
-*timeBodyGyroJerk_std()_Y
-*timeBodyGyroJerk_std()_Z
-*timeBodyAccMagnitude_mean()
-*timeBodyAccMagnitude_std()
-*timeGravityAccMagnitude_mean()
-*timeGravityAccMagnitude_std()
-*timeBodyAccJerkMagnitude_mean()
-*timeBodyAccJerkMagnitude_std()
-*timeBodyGyroMagnitude_mean()
-*timeBodyGyroMagnitude_std()
-*timeBodyGyroJerkMagnitude_mean()
-*timeBodyGyroJerkMagnitude_std()
-
+* timeBodyGyroJerk_mean()_X
+* timeBodyGyroJerk_mean()_Y
+* timeBodyGyroJerk_mean()_Z
+* timeBodyGyroJerk_std()_X
+* timeBodyGyroJerk_std()_Y
+* timeBodyGyroJerk_std()_Z
+* timeBodyAccMagnitude_mean()
+* timeBodyAccMagnitude_std()
+* timeGravityAccMagnitude_mean()
+* timeGravityAccMagnitude_std()
+* timeBodyAccJerkMagnitude_mean()
+* timeBodyAccJerkMagnitude_std()
+* timeBodyGyroMagnitude_mean()
+* timeBodyGyroMagnitude_std()
+* timeBodyGyroJerkMagnitude_mean()
+* timeBodyGyroJerkMagnitude_std()
+ 
 ###Frequency domain signals
 
 A Fast Fourier Transform (FFT) was applied to some of these signals" producing frequency domain signals. The following variables represent the mean and standard deviation of these frequency domain signals:
 
-*FFT_BodyAcc_mean()_X
-*FFT_BodyAcc_mean()_Y
-*FFT_BodyAcc_mean()_Z
-*FFT_BodyAcc_std()_X
-*FFT_BodyAcc_std()_Y
-*FFT_BodyAcc_std()_Z
-*FFT_BodyAcc_meanFreq()_X
-*FFT_BodyAcc_meanFreq()_Y
-*FFT_BodyAcc_meanFreq()_Z
-*FFT_BodyAccJerk_mean()_X
-*FFT_BodyAccJerk_mean()_Y
-*FFT_BodyAccJerk_mean()_Z
-*FFT_BodyAccJerk_std()_X
-*FFT_BodyAccJerk_std()_Y
-*FFT_BodyAccJerk_std()_Z
-*FFT_BodyGyro_mean()_X
-*FFT_BodyGyro_mean()_Y
-*FFT_BodyGyro_mean()_Z
-*FFT_BodyGyro_std()_X
-*FFT_BodyGyro_std()_Y
-*FFT_BodyGyro_std()_Z
+* FFT_BodyAcc_mean()_X
+* FFT_BodyAcc_mean()_Y
+* FFT_BodyAcc_mean()_Z
+* FFT_BodyAcc_std()_X
+* FFT_BodyAcc_std()_Y
+* FFT_BodyAcc_std()_Z
+* FFT_BodyAcc_meanFreq()_X
+* FFT_BodyAcc_meanFreq()_Y
+* FFT_BodyAcc_meanFreq()_Z
+* FFT_BodyAccJerk_mean()_X
+* FFT_BodyAccJerk_mean()_Y
+* FFT_BodyAccJerk_mean()_Z
+* FFT_BodyAccJerk_std()_X
+* FFT_BodyAccJerk_std()_Y
+* FFT_BodyAccJerk_std()_Z
+* FFT_BodyGyro_mean()_X
+* FFT_BodyGyro_mean()_Y
+* FFT_BodyGyro_mean()_Z
+* FFT_BodyGyro_std()_X
+* FFT_BodyGyro_std()_Y
+* FFT_BodyGyro_std()_Z 
 
 ###Weighted Averages of Variables
 
