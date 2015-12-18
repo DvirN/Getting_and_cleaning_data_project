@@ -11,13 +11,15 @@ This is a README intended to help the user run the provided script which handels
 ##Contents
 This repo contains the following:
 
-*R script named "run_analysis.R" - a script used to clean the raw UCI data
-*A CodeBook Markdwon file named "CodeBook.md" - which explaines how the script works
-*A tidy data-set, which is the result of running the script on the raw data
+* This README  file
+* R script named "run_analysis.R" - a script used to clean the raw UCI data
+* A CodeBook Markdwon file named "CodeBook.md" - which explaines how the script works
+
 
 ##Requirments
 
 In order to run the run_analysis script, one should:
+
 1. Insatll R
 2. Install package "reshape2"
 3. Download the zip file in: https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip
