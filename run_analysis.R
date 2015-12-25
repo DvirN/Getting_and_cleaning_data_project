@@ -52,9 +52,7 @@ mean_std_lab_data$label <- NULL
 
 ##Summarizing the data according to each subject + activity pair
 
-data_melt <- melt(mean_std_lab_data, id = c("subject","label_name"),measure.vars = c(names(mean_std_lab_data)[1:86]))
 
-tidy_data_melted <- dcast(data_melt, subject + label_name ~ variable, mean)
 
 grouped_data <- group_by(mean_std_lab_data, subject, label_name)
 tidy_data <- summarize_each(grouped_data, funs(mean))
