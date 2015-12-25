@@ -2,30 +2,32 @@
 
 #Background
 
-This is a Codebook for the proccessing of the raw data describing the results of experminets coducted by the team.
+This is a Codebook for the proccessing of the raw data describing the results of experminets coducted by the team. Some parts are based on the information provided which can be found at: 
+
+http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones 
 
 The experiments have been carried out with a group of 30 volunteers within an age bracket of 19-48 years. Each person performed six activities (WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING) wearing a smartphone (Samsung Galaxy S II) on the waist. Using its embedded accelerometer and gyroscope, we captured 3-axial linear acceleration and 3-axial angular velocity at a constant rate of 50Hz. The experiments have been video-recorded to label the data manually. The obtained dataset has been randomly partitioned into two sets, where 70% of the volunteers was selected for generating the training data and 30% the test data. 
 
 The sensor signals (accelerometer and gyroscope) were pre-processed by applying noise filters and then sampled in fixed-width sliding windows of 2.56 sec and 50% overlap (128 readings/window). The sensor acceleration signal, which has gravitational and body motion components, was separated using a Butterworth low-pass filter into body acceleration and gravity. The gravitational force is assumed to have only low frequency components, therefore a filter with 0.3 Hz cutoff frequency was used. From each window, a vector of features was obtained by calculating variables from the time and frequency domain.
 
-##Data Cleaning and tidying steps
+##Data Cleaning and Tidying Steps Explanation:
 
-Generally, the proceess for tidying the data can be divided fo five steps.
+Generally, the proceess for tidying the data can is divided to 6 steps.
 
 1. In the first step, the six data files (3 for train, 3 for test) are loaded and merged alltogether:
-first, the complete train set is created, by joining the columms of the X_train, Y_train, and subject_train. Similarly, a joined test data-set is created. These two data set are joined by their rows to create a whole data frame - train and test data.
+first, the complete train set is created, by joining the columms of the X_train, Y_train, and subject_train. Similarly, a joined test data-set is created. These two data set are then joined by their rows to create a whole data frame - train and test data.
 
-2. In the second step, the variables in the recrently created dataset are given the names can be found in the features.txt file. The subject and label variables are also given their names at this stage.
+2. In the second step, the variables in the recrently created dataset are given the names can be found in the features.txt file. Theses names are first converted to standart R names. The subject and label variables are also given their names at this stage.
 
-3. In the third step, we choose to subset the data only to the variables dealing with mean or standart deviation. This is done by using regular experessions, to keep only the indices of variables including these measurments in their names.
+3. In the third step, we choose to subset the data only to the variables dealing with mean or standart deviation. This is done by searching the variable names for specific experssions, to keep only the indices of variables including these measurments in their names. For selecting mean and std measurments, I looked for the expressions "mean" or "std in the variables names. (*I decided it would be than "mean()" or "std()" - because I did not want to lose inforrmation that might be useful for someone)
 
-4. In the fourth step, the labels numbers are replaced with the corresponding label activities. This is done by joining the data with the activity labels data provided as txt file.
+4. In the fourth step, the labels numbers are replaced with the corresponding label activities. This is done by joining the data with the activity labels data provided as a txt file.
 
-5. In the fifth step, the data is melted down, and then reformed, using the subject number and activity type as an ID.
+5. In the fifth step, the data is grouped by the subject and activity type (using the dplyr package), and then the mean of each of the 86 variables is calculated  for each such a pair, as required. This is a wide format.
 
-6. In the last step, the variables are given more informative names.This is done once again ising regular expressions.
+6. In the last step, the variables are given more informative names.This is done once again using simple text find & replace functions, in order to replace "shortcuts" such as "t" to "time", etc.
 
-The result is a tidy dataset, with 180 rows (30 subjects * 6 activity types) and 88 colloums (86 measurments, subject id and activity type).
+The result is a tidy dataset, with 180 rows (30 subjects * 6 activity types) and 88 colloums (86 measurments, subject id and activity type), describing the mean of each variable.
 
 ##Variable Explanation
 

@@ -1,4 +1,4 @@
-library(reshape2)
+library(dplyr)
 
 
 ##  READ DATA 
@@ -12,27 +12,30 @@ Y_test <- read.table("Y_test.txt")
 subject_train <- read.table("subject_train.txt")
 subject_test <- read.table("subject_test.txt")
 
+features <- read.table("features.txt")
 
-## Merging Train and Test data sets with their respective subject (cbind)
 
-train_with_lab_sub <- cbind(X_train, y_train, subject_train)
-test_with_lab_sub <- cbind(X_test, y_test, subject_test)
+## Merging Train and Test data sets with their each other and with the respective subject (columns bind)
 
-## Merge the above created data sets to one (rbind)
+train_with_lab_sub <- cbind(X_train, Y_train, subject_train)
+test_with_lab_sub <- cbind(X_test, Y_test, subject_test)
+
+## Merge the above created data sets to one (rows bind)
 all_data <- rbind(train_with_lab_sub, test_with_lab_sub)
 
-##Changing col names
+##Changing columns names
 
-names(all_data) <- features$V2
-names(all_data)[c(562,563)] <- c("label", "subject")
+names(all_data) <- make.names(features$V2) ## Give variabels infomrative and 'legal' names from the features txt file
+names(all_data)[c(562,563)] <- c("label", "subject") ##name the label and subject columns
 
 ##Finding variables of mean OR std
 
-##finding indices
+##finding their indices
+
 var_names <- names(all_data)
 mean_indices <- grepl("mean", tolower(var_names)) ## mean var indices
 std_indices <- grepl("std", tolower(var_names)) ## std var indices
-all_indices <- mean_indices | std_indices ## join either
+all_indices <- mean_indices | std_indices ## join EITHER
 
 ## subseting to only std or mean variables + label (562) + subject (563)
 mean_std_data <- all_data[, c(which(all_indices), 562, 563)]
@@ -47,20 +50,28 @@ mean_std_lab_data <- merge(mean_std_data, activity_labels, by = "label", all = T
 ##Deleting label number (no longer needed, we have the label name)
 mean_std_lab_data$label <- NULL
 
+##Summarizing the data according to each subject + activity pair
+
 data_melt <- melt(mean_std_lab_data, id = c("subject","label_name"),measure.vars = c(names(mean_std_lab_data)[1:86]))
 
-tidy_data <- dcast(data_melt, subject + label_name ~ variable, mean)
+tidy_data_melted <- dcast(data_melt, subject + label_name ~ variable, mean)
+
+grouped_data <- group_by(mean_std_lab_data, subject, label_name)
+tidy_data <- summarize_each(grouped_data, funs(mean))
 
 ##Renaming tidy data variables names
 tidy_names <- names(tidy_data)
 tidy_names <- gsub("-", "_",tidy_names)
 tidy_names <- gsub("Mag", "Magnitude",tidy_names)
 tidy_names <- gsub("tGravity", "timeGravity", tidy_names)
+tidy_names <- gsub("tBody", "timeBody", tidy_names)
 tidy_names <- gsub("fBody", "FFT_Body", tidy_names)
 
 names(tidy_data) <- tidy_names ## inserting the now renamed variables
 
 write.table(tidy_data, file = "tidy_data.txt", row.names = FALSE)
+
+View(tidy_data)
 
 
 
